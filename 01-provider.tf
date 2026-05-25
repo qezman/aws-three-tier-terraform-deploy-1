@@ -6,12 +6,20 @@
 terraform {
   required_providers {
     namecheap = {
-      source = "namecheap/namecheap"
+      source  = "namecheap/namecheap"
       version = "2.2.0"
     }
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "6.0.0-beta2"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.12"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.27"
     }
   }
 }

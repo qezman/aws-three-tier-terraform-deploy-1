@@ -7,7 +7,7 @@ permissions:
   contents: read
   actions: read
   id-token: write
-  packages: read 
+  packages: read
 jobs:
   deploy-iac:
     runs-on: [self-hosted, docker, terraform]
@@ -57,5 +57,8 @@ jobs:
 
       - name: "Terraform Plan"
         run: terraform plan
+
+      - name: "Terraform Output"
+        run: terraform output
     # - name: "Terraform Apply"
     #   run: terraform apply -auto-approve
