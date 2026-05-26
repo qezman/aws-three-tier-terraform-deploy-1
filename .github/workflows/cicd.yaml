@@ -47,7 +47,7 @@ jobs:
         run: terraform init
 
       - name: Write terraform.tfvars
-        run: echo "${{ secrets.TF_VARS_SECRET }}" > terraform.tfvars
+        run: printf '%s' "${{ secrets.TF_VARS_SECRET }}" > terraform.tfvars
 
       - name: "Terraform fmt"
         run: terraform fmt
