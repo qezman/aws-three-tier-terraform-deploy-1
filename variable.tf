@@ -2,14 +2,12 @@ variable "vpc_cidrblock" {
   description = "CIDR block for the VPC"
   type        = string
   default     = "192.168.0.0/16"
-  
 }
 
 variable "environment" {
-  description = "Environment name (e.g., dev, staging, prod)"
+  description = "Environment name"
   type        = string
-  default     = "staging"
-  
+  default     = "production"
 }
 
 variable "create_subnet" {
@@ -22,147 +20,76 @@ variable "countsub" {
   description = "Number of subnets to create"
   type        = number
   default     = 2
-  
 }
+
 variable "create_elastic_ip" {
   description = "Flag to create Elastic IPs"
   type        = bool
   default     = true
 }
 
-
-variable "desired_size" {
-  description = "Desired size of the EKS node group"
-  type        = number
-  default     = 2
-}
-
-variable "max_size" {
-  description = "Maximum size of the EKS node group"
-  type        = number
-  default     = 6
-}
-
-variable "min_size" {
-  description = "Minimum size of the EKS node group"
-  type        = number
-  default     = 2 
-}
-
-variable "instance_types" {
-  description = "Instance types for the EKS node group"
-  type        = list(string)
-  default     = ["t2.micro"]    
-} 
-
-variable "capacity_type" {
-  description = "Capacity type for the EKS node group"
-  type        = string
-  default     = "ON_DEMAND"
-}
-variable "eks_version" {
-  description = "EKS cluster version"
-  type        = string
-  default     = "1.32"
-}
-variable "ami_type" {
-  description = "AMI type for the EKS node group"
-  type        = string
-  default     = "AL2_x86_64" # Use AL2_x86_64 for x86 instances, AL2_ARM_64 for ARM instances
-}
-
-variable "label_one" {
-  description = "Label for the EKS node group"
-  type        = string
-  default     = "system"
-}
-
-variable "zone_name" {
-  description = "Name of the DNS zone"
-  type        = string
-  default     = "example.com"
-}
-
 variable "domain-name" {
-  description = "Domain name to be created"
+  description = "Domain name"
   type        = string
-  default     = "myapp.example.com"
+  default     = "qossim005.online"
 }
 
-variable "namecheap_api_user" {
-  description = "Namecheap API user"
+variable "email" {
+  description = "Email for SSL certificates"
   type        = string
-  default     = "smartobi"
+  default     = "holaryinka5050@gmail.com"
 }
-variable "namecheap_api_key" {
-  description = "Namecheap API key"
-  type        = string
-  default     = "a3ca57241b794d44b0fc3387ca9b62a9"
-}
-variable "namecheap_username" {
-  description = "Namecheap username"
-  type        = string
-  default     = "smartobi"
-}
-variable "namecheap_client_ip" {
-  description = "Client IP for Namecheap API access"
-  type        = string
-  default     = "3.234.224.225" # Replace with your actual client IP
-}
-
-#===========
 
 variable "db_instance_class" {
-  description = "Instance class for the RDS database"
+  description = "Instance class for RDS"
   type        = string
-  default     = "db.t3.micro" 
+  default     = "db.t3.micro"
 }
 
 variable "db_allocated_storage" {
-  description = "Storage allocated to the DB instance (in GB)"
+  description = "Storage for DB in GB"
   type        = number
   default     = 20
 }
 
-# variable "db_subnet_group_name" {
-#   description = "Name of the DB subnet group"
-#   type        = string
-#   default     = "my-db-subnet-group"
-# }
-
 variable "db_username" {
-  description = "Username for the database"
+  description = "Database username"
   type        = string
   default     = "admin"
 }
 
 variable "db_password" {
-  description = "Password for the database"
+  description = "Database password"
   type        = string
-  default     = "password123"
+  default     = "Kazeem2026Secure"
   sensitive   = true
 }
 
 variable "db_name" {
   description = "Database name"
   type        = string
-  default     = "production_db"
-}
-variable "cluster_name" {
-  description = "The name of the EKS cluster"
-  type        = string
-  default     = "eks-cluster"
+  default     = "appdb"
 }
 
-variable "repository_name" {
-  description = "Name of the ECR repository"
+variable "frontend_image" {
+  description = "Docker image for frontend"
   type        = string
-  default     = "eks-repository"
-  
+  default     = "nginx:latest"
 }
 
-variable "email" {
-  description = "Email address for notifications and certificates"
+variable "backend_image" {
+  description = "Docker image for backend"
   type        = string
-  default     = "support@digitalwitchng.online"
+  default     = "nginx:latest"
+}
+
+variable "certificate_arn" {
+  type    = string
+  default = ""
+}
+
+variable "resend_api_key" {
+  description = "API key for Resend email service"
+  type        = string
+  sensitive   = true
 }

@@ -47,7 +47,9 @@ jobs:
         run: terraform init
 
       - name: Write terraform.tfvars
-        run: printf '%s' "${{ secrets.TF_VARS_SECRET }}" > terraform.tfvars
+        run: |
+          printf '%s' "${{ secrets.TF_VARS_SECRET }}" > terraform.tfvars
+          cat terraform.tfvars
 
       - name: "Terraform fmt"
         run: terraform fmt
@@ -64,8 +66,8 @@ jobs:
       - name: "Terraform Output"
         run: terraform output
 
-      - name: "Terraform Apply"
-        run: terraform apply -auto-approve
+      # - name: "Terraform Apply"
+      #   run: terraform apply -auto-approve
 
       # - name: "Terraform Destroy"
       #   run: terraform destroy -auto-approve
