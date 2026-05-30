@@ -115,6 +115,6 @@ terraform destroy -auto-approve
 Kazeem Jimoh
 `
 
-<!-- ## This is the architecture for the infrastruture deployment
+## This is the architecture for the infrastruture deployment
 ![Project Architecture](architecture.png)# aws-three-tier-Deploy
-# aws-three-tier-Deploy -->
+# aws-three-tier-Deploy
